@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ColorConnectPhotoConverison</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,27 +14,91 @@
         <button id="save-photo" disabled>Save to Gallery</button>
     </div>
 
+    <div id="status-message">Please allow camera access when prompted</div>
+    
+    <div id="video-container">
+        <video id="video-feed" autoplay playsinline></video>
+    </div>
+    
+    <div id="photo-container">
+        <img id="captured-photo" alt="Captured photo will appear here">
+    </div>
+
     <script>
         const startButton = document.getElementById('start-camera');
         const takePhotoButton = document.getElementById('take-photo');
         const retakeButton = document.getElementById('retake-photo');
         const saveButton = document.getElementById('save-photo');
+        const videoElement = document.getElementById('video-feed');
+        const photoElement = document.getElementById('captured-photo');
+        const statusMessage = document.getElementById('status-message');
+
+        let stream = null;
+        let photoCanvas = document.createElement('canvas');
+        let photoContext = photoCanvas.getContext('2d');
 
         function startCamera(){
-            
+            try {
+                statusMessage.textContent = "Requesting camera access...";
+                
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        width: { ideal: 1920 },
+                        height: { ideal: 1080 };
+                    },
+                    audio: false
+                });
+
+                videoElement.srcObject = stream;
+                
+                statusMessage.textContent = "Camera is active. You can now take photos.";
+                takePhotoButton.disabled = false;
+                startButton.disabled = true;
+                
+                videoElement.onloadedmetadata = () => {
+                    photoCanvas.width = videoElement.videoWidth;
+                    photoCanvas.height = videoElement.videoHeight;
+                };
+                
+            } catch (error) {
+                statusMessage.textContent = `Error accessing camera: ${error.message}`;
+                console.error('Error accessing camera:', error);
+            }
         }
 
         function takePhoto(){
+            if (!stream) return;
             
+            photoContext.drawImage(videoElement, 0, 0, photoCanvas.width, photoCanvas.height);
+            photoElement.src = photoCanvas.toDataURL('image/png');
+            photoElement.style.display = 'block';
+            videoElement.style.display = 'none';
+            
+            takePhotoButton.disabled = true;
+            retakeButton.disabled = false;
+            saveButton.disabled = false;
+            statusMessage.textContent = "Here's your Photo. You can save or retake.";
         }
 
         function retakePhoto(){
+            videoElement.style.display = 'block';
+            photoElement.style.display = 'none';
             
+            takePhotoButton.disabled = false;
+            retakeButton.disabled = true;
+            saveButton.disabled = true;
+            statusMessage.textContent = "Camera is active. You can now take photos.";
         }
 
         function savePhoto(){
             
         }
+
+         window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
 
         window.addEventListener('load', startCamera);
         startButton.addEventListener('click', startCamera);
