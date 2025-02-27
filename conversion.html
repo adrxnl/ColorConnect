@@ -37,7 +37,7 @@
         let photoCanvas = document.createElement('canvas');
         let photoContext = photoCanvas.getContext('2d');
 
-        function startCamera(){
+        async function startCamera(){
             try {
                 statusMessage.textContent = "Requesting camera access...";
                 
