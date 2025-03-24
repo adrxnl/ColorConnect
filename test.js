@@ -5,7 +5,7 @@ const statusMessage = document.getElementById("status-message");
 
 let currentQuestion = 0;
 let userResponses = [];
-let correctAnswers = ['7','2','9','4','8','2','8','5','8','2','5','7','7','1','1','3','6','6','4','6','2','2','9','1','8','1','1']; // Correct answers for plates 1, 2, 3, 4
+let correctAnswers = ['7','2','9','4','8','2','8','5','8','2','5','7','7','1','1','3','6','6','4','6','2','2','9','1','8','1','1']; 
 let redSensitivity = 100;
 let greenSensitivity = 100;
 let blueSensitivity = 100;
@@ -43,7 +43,6 @@ const plates = [
 ];
 
 function loadNextQuestion() {
-    // Compare the answer with the correct answer
     let currentPlate = plates[currentQuestion];
 
     if (userResponses[currentQuestion] !== currentPlate.correctAnswer) {
@@ -79,13 +78,19 @@ nothingButton.addEventListener("click", () => {
 });
 
 function showResults() {
-    statusMessage.textContent = `Test Complete! Your responses: ${userResponses.join(", ")}`;
+    let colorBlindnessType = determineColorBlindnessType();
+    
+    statusMessage.textContent = `Test Complete! Color Blindness Type: ${colorBlindnessType}`;
     
     let resultMessage = `
-        <p>Red Sensitivity: ${redSensitivity}%</p>
-        <p>Green Sensitivity: ${greenSensitivity}%</p>
-        <p>Blue Sensitivity: ${blueSensitivity}%</p>
+        <p>Red Sensitivity: ${redSensitivity.toFixed(2)}%</p>
+        <p>Green Sensitivity: ${greenSensitivity.toFixed(2)}%</p>
+        <p>Blue Sensitivity: ${blueSensitivity.toFixed(2)}%</p>
+        <p>Color Blindness Type: ${colorBlindnessType}</p>
     `;
+    
+    // Store color blindness type in localStorage
+    localStorage.setItem('colorBlindnessType', colorBlindnessType);
     
     // Append results message
     const resultContainer = document.createElement('div');
@@ -98,3 +103,11 @@ function showResults() {
     nothingButton.style.display = "none";
 }
 
+function determineColorBlindnessType() {
+    // Simple classification based on sensitivity
+    if (redSensitivity < 50) return 'protanopia';
+    if (greenSensitivity < 50) return 'deuteranopia';
+    if (blueSensitivity < 50) return 'tritanopia';
+    
+    return 'normal'; // No color blindness detected
+}

@@ -1,112 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ColorConnectPhotoConverison</title>
+    <title>ColorConnect: Photo Conversion</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>ColorConnect: Photo Conversion</h1>
-
-     <div id="status-message">Please allow camera access when prompted</div>
+    
+    <div id="status-message">Please click 'Connect Camera' to start</div>
     
     <div id="video-container">
         <video id="video-feed" autoplay playsinline></video>
     </div>
     
     <div id="photo-container">
-        <img id="captured-photo" alt="Captured photo will appear here">
+        <canvas id="filtered-canvas" style="display: none;"></canvas>
+        <img id="captured-photo" alt="Captured photo will appear here" style="display: none;">
     </div>
-
-     <div class="button-container">
+    
+    <div class="button-container">
         <button id="start-camera">Connect Camera</button>
         <button id="take-photo" disabled>Take Photo</button>
         <button id="retake-photo" disabled>Retake</button>
         <button id="save-photo" disabled>Save to Gallery</button>
     </div>
-
-    <script>
-        const startButton = document.getElementById('start-camera');
-        const takePhotoButton = document.getElementById('take-photo');
-        const retakeButton = document.getElementById('retake-photo');
-        const saveButton = document.getElementById('save-photo');
-        const videoElement = document.getElementById('video-feed');
-        const photoElement = document.getElementById('captured-photo');
-        const statusMessage = document.getElementById('status-message');
-
-        let stream = null;
-        let photoCanvas = document.createElement('canvas');
-        let photoContext = photoCanvas.getContext('2d');
-
-        async function startCamera(){
-            try {
-                statusMessage.textContent = "Requesting camera access...";
-                
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: {
-                        width: { ideal: 1920 },
-                        height: { ideal: 1080 },
-                        facingMode: 'environment'
-                    },
-                    audio: false
-                });
-
-                videoElement.srcObject = stream;
-                
-                statusMessage.textContent = "Camera is active. You can now take photos.";
-                takePhotoButton.disabled = false;
-                startButton.disabled = true;
-                
-                videoElement.onloadedmetadata = () => {
-                    photoCanvas.width = videoElement.videoWidth;
-                    photoCanvas.height = videoElement.videoHeight;
-                };
-                
-            } catch (error) {
-                statusMessage.textContent = `Error accessing camera: ${error.message}`;
-                console.error('Error accessing camera:', error);
-            }
-        }
-
-        function takePhoto(){
-            if (!stream) return;
-            
-            photoContext.drawImage(videoElement, 0, 0, photoCanvas.width, photoCanvas.height);
-            photoElement.src = photoCanvas.toDataURL('image/png');
-            photoElement.style.display = 'block';
-            videoElement.style.display = 'none';
-            
-            takePhotoButton.disabled = true;
-            retakeButton.disabled = false;
-            saveButton.disabled = false;
-            statusMessage.textContent = "Here's your Photo. You can save or retake.";
-        }
-
-        function retakePhoto(){
-            videoElement.style.display = 'block';
-            photoElement.style.display = 'none';
-            
-            takePhotoButton.disabled = false;
-            retakeButton.disabled = true;
-            saveButton.disabled = true;
-            statusMessage.textContent = "Camera is active. You can now take photos.";
-        }
-
-        function savePhoto(){
-            
-        }
-
-         window.addEventListener('beforeunload', () => {
-            if (stream) {
-                stream.getTracks().forEach(track => track.stop());
-            }
-        });
-
-        window.addEventListener('load', startCamera);
-        startButton.addEventListener('click', startCamera);
-        takePhotoButton.addEventListener('click', takePhoto);
-        retakeButton.addEventListener('click', retakePhoto);
-        saveButton.addEventListener('click', savePhoto);
-        
-    </script>
+    
+    <div class="filter-container">
+        <select id="filter-type">
+            <option value="none">None</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="tritanopia">Tritanopia</option>
+        </select>
+    </div>
+    
+    <script src="conversion.js"></script>
 </body>
 </html>
