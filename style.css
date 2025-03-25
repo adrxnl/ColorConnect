@@ -208,3 +208,7 @@ div {
 #upload-photo:hover {
     background-color: #1976D2;
 }
+
+#file-input {
+    display: none;
+}
