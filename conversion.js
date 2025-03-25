@@ -2,6 +2,8 @@ class PhotoManager {
     constructor() {
         // UI Elements
         this.startButton = document.getElementById('start-camera');
+        this.uploadButton = document.getElementById('upload-photo');
+        this.fileInput = document.getElementById('file-input');
         this.takePhotoButton = document.getElementById('take-photo');
         this.retakeButton = document.getElementById('retake-photo');
         this.saveButton = document.getElementById('save-photo');
@@ -25,6 +27,7 @@ class PhotoManager {
         this.retakePhoto = this.retakePhoto.bind(this);
         this.savePhoto = this.savePhoto.bind(this);
         this.applyColorBlindnessFilter = this.applyColorBlindnessFilter.bind(this);
+        this.handleFileUpload = this.handleFileUpload.bind(this);
 
         // Initialize event listeners
         this.initEventListeners();
@@ -36,6 +39,8 @@ class PhotoManager {
 
     initEventListeners() {
         this.startButton.addEventListener('click', this.startCamera);
+        this.uploadButton.addEventListener('click', () => this.fileInput.click());
+        this.fileInput.addEventListener('change', this.handleFileUpload);
         this.takePhotoButton.addEventListener('click', this.takePhoto);
         this.retakeButton.addEventListener('click', this.retakePhoto);
         this.saveButton.addEventListener('click', this.savePhoto);
@@ -120,6 +125,41 @@ class PhotoManager {
         this.retakeButton.disabled = false;
         this.saveButton.disabled = false;
     }
+
+    handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    this.filteredCanvas.width = img.width;
+                    this.filteredCanvas.height = img.height;
+                    
+                    this.filteredContext.drawImage(img, 0, 0, img.width, img.height);
+
+                    this.originalImageData = this.filteredContext.getImageData(0, 0, img.width, img.height);
+
+                    this.applyFilterToImage();
+
+                    this.videoElement.style.display = 'none';
+                    this.photoElement.style.display = 'block';
+                    this.photoElement.src = this.filteredCanvas.toDataURL('image/png');
+
+                    this.takePhotoButton.disabled = true;
+                    this.retakeButton.disabled = false;
+                    this.saveButton.disabled = false;
+
+                    this.statusMessage.textContent = "Photo uploaded and filtered!";
+                };
+                img.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
 
     applyFilterToImage() {
         // Reset canvas
