@@ -430,19 +430,22 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Unable to save artwork. Please try again.");
         return;
       }
+
+      let gallery = JSON.parse(localStorage.getItem("colorConnectGallery") || "[]");
       
+      const imageID = `photo_${Date.now()}`;
+
       const reader = new FileReader();
       reader.onloadend = () => {
-        const base64 = reader.result;
-        const gallery = JSON.parse(localStorage.getItem("colorConnectGallery") || "[]");
-        gallery.push({
-          id: Date.now(),
-          image: base64,
-          title: currentArtwork.title,
-          artist: currentArtwork.artist,
-          filter: currentFilter,
-          date: new Date().toISOString()
-        });
+        const photoObject1 = {
+          id: imageID,
+          dataUrl: reader.result,
+          type: this.filter,
+          timestamp: new Date().toISOString()
+        };
+
+        gallery.push(photoObject1);
+
         localStorage.setItem("colorConnectGallery", JSON.stringify(gallery));
         alert("Artwork saved to gallery!");
       };
