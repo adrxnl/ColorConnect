@@ -22,7 +22,7 @@ body{
     min-height: 100vh;
     background-image: url(backgroundtest.webp);
     background-size: auto;
-    background-position: 90% 100%;
+    background-position: 150% 50%;
     overflow: clip;
 }
 
