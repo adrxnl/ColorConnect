@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ColorConnect: Art Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="artExplorer.css">
+</head>
+<body>
+  <h1>ColorConnect: Art Explorer</h1>
+
+  <nav>
+    <ul>
+      <li><a href="ColorConnect.html">Home</a></li>
+      <li><a href="test.html">Colorblind Test</a></li>
+      <li><a href="conversion.html">Photo Conversion</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="ArtTimeline.html">Art Timeline</a></li>
+      <li><a href="artExplorer.html">Art Explorer</a></li>
+    </ul>
+  </nav>
+
+  <div class="search-container">
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search by title, artist, or movement." required>
+      <select id="search-type">
+        <option value="title">Title</option>
+        <option value="artist">Artist</option>
+        <option value="movement">Art Movement</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div id="search-loading" class="hidden">
+    <div class="loader"></div>
+    <p>Searching for artworks...</p>
+  </div>
+
+  <div id="no-results" class="hidden">
+    <p>No artworks found. Try different keywords.</p>
+  </div>
+
+  <div id="results-container" class="hidden">
+    <h2>Search Results</h2>
+    <div id="results-grid"></div>
+  </div>
+
+  <div id="artwork-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="artwork-details">
+        <h2 id="modal-title">Artwork Title</h2>
+        <h3 id="modal-artist">Artist Name</h3>
+        <div class="artwork-view">
+          <div class="artwork-image-container">
+            <canvas id="modal-canvas"></canvas>
+          </div>
+          <div class="artwork-info">
+            <p id="modal-year">Year:</p>
+            <p id="modal-movement">Movement:</p>
+            <p id="modal-description">Description:</p>
+          </div>
+        </div>
+        <div class="artwork-controls">
+          <div class="modal-filter-buttons">
+            <h4>Select Color Vision Type</h4>
+            <div class="filter-buttons">
+              <button class="modal-filter-btn active" data-filter="none">Normal View</button>
+              <button class="modal-filter-btn" data-filter="protanopia">Protanopia</button>
+              <button class="modal-filter-btn" data-filter="deuteranopia">Deuteranopia</button>
+              <button class="modal-filter-btn" data-filter="tritanopia">Tritanopia</button>
+            </div>
+            <div class="modal-intensity-control">
+              <label for="modal-intensity-slider">Correction Intensity:</label>
+              <input type="range" id="modal-intensity-slider" min="0" max="100" value="100">
+              <span id="modal-intensity-value">100%</span>
+            </div>
+          </div>
+        
+          <div class="action-buttons">
+            <button id="save-artwork">Save to Gallery</button>
+            <button id="share-artwork">Share Artwork</button>
+            <a id="download-artwork" download="colorconnect_artwork.png">Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="share-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-share-modal">&times;</span>
+      <h2>Share This Artwork</h2>
+      <div class="share-options">
+        <button id="share-email"><img src="icons/email.png" alt="Email">Email</button>
+        <button id="share-facebook"><img src="icons/facebook.png" alt="Facebook">Facebook</button>
+        <button id="share-twitter"><img src="icons/twitter.png" alt="Twitter">Twitter</button>
+        <button id="share-link"><img src="icons/link.png" alt="Copy Link">Copy Link</button>
+      </div>
+      <div id="share-link-box" class="hidden">
+        <input type="text" id="share-link-input" readonly>
+        <button id="copy-link">Copy</button>
+        <span id="copy-confirm" class="hidden">Copied!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="artExplorer.js"></script>
+</body>
+</html>
