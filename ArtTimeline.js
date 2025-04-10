@@ -84,7 +84,9 @@ const descElement = document.getElementById("description");
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const searchResults = document.getElementById("searchResults");
-
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const searchResults = document.getElementById("searchResults");
 function updateDisplay() {
   imgElement.src = images[currentIndex] || "";
   titleElement.innerText = titles[currentIndex] || "Image Title";
@@ -119,6 +121,78 @@ function applyFilter(type) {
 }
 
 updateDisplay();
+let searchResultsArray = [];
+
+function searchImages(input) {
+  searchResults.innerHTML = "";
+  searchResultsArray = [];
+  
+  if (!input.trim()) {
+    searchResults.style.display = "none";
+    return;
+  }
+  
+  const inputLower = input.toLowerCase();
+  
+  for (let i = 0; i < titles.length; i++) {
+    if (titles[i].toLowerCase().includes(inputLower) || 
+        descriptions[i].toLowerCase().includes(inputLower)) {
+      searchResultsArray.push(i);
+    }
+  }
+ 
+  if (searchResultsArray.length > 0) {
+    searchResults.style.display = "block";
+    
+    searchResultsArray.forEach(index => {
+      const resultItem = document.createElement("div");
+      resultItem.className = "search-result-item";
+      resultItem.textContent = titles[index];
+      resultItem.addEventListener("click", function() {
+        currentIndex = index;
+        updateDisplay();
+        searchResults.style.display = "none";
+        searchInput.value = "";
+      });
+      searchResults.appendChild(resultItem);
+    });
+  } else {
+    searchResults.style.display = "block";
+    const noResults = document.createElement("div");
+    noResults.className = "no-results";
+    noResults.textContent = "No matching artworks found";
+    searchResults.appendChild(noResults);
+  }
+}
+
+if (searchButton) {
+  searchButton.addEventListener("click", function() {
+    searchImages(searchInput.value);
+  });
+}
+
+if (searchInput) {
+  searchInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      searchImages(searchInput.value);
+    }
+    
+    if (searchInput.value.length >= 3) {
+      searchImages(searchInput.value);
+    } else if (searchInput.value.length === 0) {
+      searchResults.style.display = "none";
+    }
+  });
+}
+
+document.addEventListener("click", function(event) {
+  if (event.target !== searchInput && event.target !== searchResults && 
+      !searchResults.contains(event.target) && event.target !== searchButton) {
+    searchResults.style.display = "none";
+  }
+});
+<<<<<<< HEAD
+=======
 let searchResultsArray = [];
 
 function searchImages(input) {
