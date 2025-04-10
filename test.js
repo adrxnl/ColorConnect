@@ -95,7 +95,7 @@ function showResults() {
     // Append results message
     const resultContainer = document.createElement('div');
     resultContainer.innerHTML = resultMessage;
-    document.body.appendChild(resultContainer);
+    document.querySelector('.main-content').appendChild(resultContainer);
     
     // Hide test UI elements
     plateImage.style.display = "none";
@@ -110,4 +110,9 @@ function determineColorBlindnessType() {
     if (blueSensitivity < 50) return 'tritanopia';
     
     return 'normal'; // No color blindness detected
+}
+
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
 }
