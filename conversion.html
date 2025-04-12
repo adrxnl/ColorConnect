@@ -2,40 +2,65 @@
 <html>
 <head>
     <title>ColorConnect: Photo Conversion</title>
+    <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ColorConnect: Photo Conversion</h1>
+    <header class="topbar">
+        <h1>ColorConnect</h1>
+    </header>
     
-    <div id="status-message">Please click 'Connect Camera' or upload a photo to start</div>
-    
-    <div id="video-container">
-        <video id="video-feed" autoplay playsinline></video>
+    <div class="sidebar collapsed" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="test.html">Color Blindness Test</a>
+            <a href="conversion.html">Photo Conversion</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="ArtTimeline.html">Art Timeline</a>
+            <a href="artExplorer.html">Art Explorer</a>
+        </nav>
     </div>
     
-    <div id="photo-container">
-        <canvas id="filtered-canvas" style="display: none;"></canvas>
-        <img id="captured-photo" alt="Captured photo will appear here" style="display: none;">
-    </div>
-    
-    <div class="button-container">
-        <button id="start-camera">Connect Camera</button>
-        <button id="upload-photo">Upload Photo</button> 
-        <input type="file" id="file-input" accept="image/*" style="display: none;"> 
-        <button id="take-photo" disabled>Take Photo</button>
-        <button id="retake-photo" disabled>Retake</button>
-        <button id="save-photo" disabled>Save to Gallery</button>
-    </div>
-    
-    <div class="filter-container">
-        <select id="filter-type">
-            <option value="none">None</option>
-            <option value="protanopia">Protanopia</option>
-            <option value="deuteranopia">Deuteranopia</option>
-            <option value="tritanopia">Tritanopia</option>
-        </select>
+    <div class="main-content">
+        <h1 class="page-title">Photo Conversion</h1>
+        <p id="status-message">Please click 'Connect Camera' or upload a photo to start</p>
+        
+        <div id="video-container">
+            <video id="video-feed" autoplay playsinline></video>
+        </div>
+        
+        <div id="photo-container">
+            <canvas id="filtered-canvas" style="display: none;"></canvas>
+            <img id="captured-photo" alt="Captured photo will appear here" style="display: none;">
+        </div>
+        
+        <div class="button-container">
+            <button id="start-camera">Connect Camera</button>
+            <button id="upload-photo">Upload Photo</button>
+            <input type="file" id="file-input" accept="image/*" style="display: none;">
+            <button id="take-photo" disabled>Take Photo</button>
+            <button id="retake-photo" disabled>Retake</button>
+            <button id="save-photo" disabled>Save to Gallery</button>
+        </div>
+        
+        <div class="filter-container">
+            <label for="filter-type">Color Filter:</label>
+            <select id="filter-type">
+                <option value="none">None</option>
+                <option value="protanopia">Protanopia</option>
+                <option value="deuteranopia">Deuteranopia</option>
+                <option value="tritanopia">Tritanopia</option>
+            </select>
+        </div>
     </div>
     
     <script src="conversion.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("collapsed");
+        }
+    </script>
 </body>
 </html>

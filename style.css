@@ -1,9 +1,22 @@
-body {
+/* Base styles */
+body, html {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 200px;
     padding: 20px;
+    transition: margin-left 0.3s;
+    max-width: 800px;
     text-align: center;
+    margin: 0 auto 0 200px; /* Center horizontally while respecting sidebar */
+}
+
+.sidebar.collapsed ~ .main-content {
+    margin-left: 80px;
 }
 
 h1 {
@@ -11,8 +24,21 @@ h1 {
     margin-bottom: 30px;
 }
 
+/* Make the page title more prominent */
+.page-title {
+    color: #0a5206;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 30px 0;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 3px solid #0a5206;
+}
+
+/* Video & Photo Elements */
 #video-container, #photo-container {
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
+    text-align: center;
 }
 
 #video-feed {
@@ -20,6 +46,8 @@ h1 {
     max-width: 640px;
     border: 3px solid #333;
     border-radius: 5px;
+    margin: 0 auto;
+    display: block;
 }
 
 #captured-photo {
@@ -28,10 +56,17 @@ h1 {
     max-width: 640px;
     border: 3px solid #333;
     border-radius: 5px;
+    margin: 0 auto;
 }
 
+/* Button styles */
 .button-container {
-    margin: 20px 0;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 button {
@@ -54,18 +89,44 @@ button:hover {
 }
 
 button:disabled {
-    display: none;
+    background-color: #cccccc;
     cursor: not-allowed;
 }
 
+#upload-photo {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 8px;
+}
+
+#upload-photo:hover {
+    background-color: #1976D2;
+}
+
+#file-input {
+    display: none;
+}
+
+/* Status message */
 #status-message {
     color: #666;
     font-style: italic;
-    margin: 10px 0;
+    margin: 10px auto;
+    text-align: center;
+    max-width: 600px;
 }
 
+/* Test-specific elements */
 #test-container {
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
+    text-align: center;
 }
 
 #plate-image {
@@ -74,6 +135,8 @@ button:disabled {
     border: 3px solid #333;
     border-radius: 5px;
     background-color: black;
+    margin: 0 auto;
+    display: block;
 }
 
 #number-pad {
@@ -81,7 +144,7 @@ button:disabled {
     grid-template-columns: repeat(3, 60px);
     gap: 10px;
     justify-content: center;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
 }
 
 .num-btn {
@@ -103,7 +166,7 @@ button:disabled {
 #nothing-container {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin: 10px auto 0 auto;
 }
 
 #nothing-btn {
@@ -122,24 +185,33 @@ button:disabled {
     background-color: #d9534f;
 }
 
-#status-message {
-    color: #666;
-    font-style: italic;
-    margin: 10px 0;
-}
-
-div {
+/* Filter container styles */
+.filter-container {
+    margin: 20px auto;
     text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
 }
-/* Existing styles remain the same */
 
+.filter-container select {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+
+.filter-container label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Gallery-specific styles */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .gallery-item {
@@ -154,12 +226,15 @@ div {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 
 .photo-metadata {
     font-size: 14px;
     color: #666;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .gallery-item button {
@@ -170,6 +245,8 @@ div {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
 }
 
 .gallery-item button:hover {
@@ -192,23 +269,37 @@ div {
     background-color: #d32f2f;
 }
 
-#upload-photo{
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 8px;
-}
-
-#upload-photo:hover {
-    background-color: #1976D2;
-}
-
-#file-input {
-    display: none;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 80px;
+        padding: 10px;
+    }
+    
+    #number-pad {
+        grid-template-columns: repeat(3, 50px);
+        gap: 5px;
+    }
+    
+    .num-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+    
+    #nothing-btn {
+        width: 160px;
+        height: 60px;
+        font-size: 18px;
+    }
+    
+    button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    .page-title {
+        font-size: 28px;
+        margin: 20px 0;
+    }
 }
