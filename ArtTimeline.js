@@ -188,8 +188,7 @@ document.addEventListener("click", function(event) {
     searchResults.style.display = "none";
   }
 });
-<<<<<<< HEAD
-=======
+
 let searchResultsArray = [];
 
 function searchImages(input) {
