@@ -1,59 +1,59 @@
 const images = [
-  "Timeline Images/The Tribute Money.jpg", 
-  "Timeline Images/Federico da Montefeltro and Battista Sforza.webp", 
-  "Timeline Images/the Last Supper.jpg", 
+  "Timeline Images/The Tribute Money.jpg",
+  "Timeline Images/Federico da Montefeltro and Battista Sforza.webp",
+  "Timeline Images/the Last Supper.jpg",
   "Timeline Images/Mona Lisa.avif",
-  "Timeline Images/The Adoration of the Shepherds,.jpg", 
-  "Timeline Images/Feast of the Rose Garlands.jpeg", 
-  "Timeline Images/School of Athens.webp", 
-  "Timeline Images/The Raphael Cartoons.jpg", 
-  "Timeline Images/Vertumnus.jpg", 
+  "Timeline Images/The Adoration of the Shepherds,.jpg",
+  "Timeline Images/Feast of the Rose Garlands.jpeg",
+  "Timeline Images/School of Athens.webp",
+  "Timeline Images/The Raphael Cartoons.jpg",
+  "Timeline Images/Vertumnus.jpg",
   "Timeline Images/Et in Arcadia ego.png",
-  "Timeline Images/The Virgin In Prayer.jpg", 
+  "Timeline Images/The Virgin In Prayer.jpg",
   "Timeline Images/View of Delft.jpg",
-  "Timeline Images/The Dancing Couple.jpg", 
-  "Timeline Images/Girl with a Pearl Earring .webp", 
+  "Timeline Images/The Dancing Couple.jpg",
+  "Timeline Images/Girl with a Pearl Earring .webp",
   "Timeline Images/Piazza San Marco.jpeg",
-  "Timeline Images/The Threshing Ground or Summer .jpg", 
-  "Timeline Images/Napoleon Crossing the Alps.jpg", 
+  "Timeline Images/The Threshing Ground or Summer .jpg",
+  "Timeline Images/Napoleon Crossing the Alps.jpg",
   "Timeline Images/Pierre-Auguste Renoir, The Skiff (La Yole).jpg",
-  "Timeline Images/Starry Night.jpg", 
-  "Timeline Images/The Scream.webp", 
+  "Timeline Images/Starry Night.jpg",
+  "Timeline Images/The Scream.webp",
   "Timeline Images/ Apple Tree With Red Fruit.jpg",
-  "Timeline Images/Rapallo boats.jpg", 
-  "Timeline Images/Throughgoing Line.webp", 
+  "Timeline Images/Rapallo boats.jpg",
+  "Timeline Images/Throughgoing Line.webp",
   "Timeline Images/Stateless People, An Assembly.jpeg"
 ];
 const titles = [
-  "The Tribute Money (1425)", 
-  "Federico da Montefeltro and Battista Sforza (1473 - 1475)", 
-  "the Last Supper (1494 - 1498)", 
-  "Mona Lisa (1503 - 1519)", 
+  "The Tribute Money (1425)",
+  "Federico da Montefeltro and Battista Sforza (1473 - 1475)",
+  "the Last Supper (1494 - 1498)",
+  "Mona Lisa (1503 - 1519)",
   "The Adoration of the Shepherds (1505 - 1510)",
-  "Feast of the Rose Garlands (1506)", 
-  "School of Athens (1508 - 1511)", 
-  "The Raphael Cartoons (1545)", 
-  "Vertumnus (1590)", 
+  "Feast of the Rose Garlands (1506)",
+  "School of Athens (1508 - 1511)",
+  "The Raphael Cartoons (1545)",
+  "Vertumnus (1590)",
   "Et in Arcadia ego (1637 - 1638)",
   "The Virgin In Prayer (1650)",
-  "View of Delft (1660 - 1661)", 
-  "The Dancing Couple (1663)", 
-  "Girl with a Pearl Earring (1666)", 
-  "Piazza San Marco (1725 - 1727)", 
+  "View of Delft (1660 - 1661)",
+  "The Dancing Couple (1663)",
+  "Girl with a Pearl Earring (1666)",
+  "Piazza San Marco (1725 - 1727)",
   "The Threshing Ground or Summer (1786)",
-  "Napoleon Crossing the Alps (1800 - 1801)", 
-  "Pierre-Auguste Renoir, The Skiff (La Yole) (1879)", 
-  "Starry Night (1889)", 
+  "Napoleon Crossing the Alps (1800 - 1801)",
+  "Pierre-Auguste Renoir, The Skiff (La Yole) (1879)",
+  "Starry Night (1889)",
   "The Scream (1893)",
-  "Apple Tree With Red Fruit (1902)", 
-  "Rapallo boats(1905)", 
-  "Throughgoing Line (1923)", 
+  "Apple Tree With Red Fruit (1902)",
+  "Rapallo boats(1905)",
+  "Throughgoing Line (1923)",
   "Stateless People, An Assembly (1981 - 1982)"
 ];
 const descriptions = [
   "The Tribute Money is a fresco created by Florentine artist Masaccio about 1426 in the Brancacci Chapel of Santa Maria del Carmine Basilica in Florence, Italy. It is part of a group of early Renaissance frescoes in that chapel that revolutionized Florentine painting and were highly influential throughout the Renaissance. For more information go to <a href='http://britannica.com/topic/The-Tribute-Money' target='_blank'>britannica.com</a>",
   "One of the most celebrated portraits of the Italian Renaissance, the diptych features the Duke of Urbino, Federico da Montefeltro (1422-1482) and his wife Battista Sforza (1446-1472). For more information go to <a href='https://www.uffizi.it/en/artworks/the-duke-and-duchess-of-urbino-federico-da-montefeltro-and-battista-sforza' target='_blank'>uffizi</a>",
-  "The Last Supper of Leonardo da Vinci is one of the most famous paintings in the world. It was painted between 1494 and 1498 under the government of Ludovico il Moro. For more information go to <a href='https://www.milan-museum.com/leonardo-last-supper-cenacolo.php' target='_blank'>Milan Museum</a>", 
+  "The Last Supper of Leonardo da Vinci is one of the most famous paintings in the world. It was painted between 1494 and 1498 under the government of Ludovico il Moro. For more information go to <a href='https://www.milan-museum.com/leonardo-last-supper-cenacolo.php' target='_blank'>Milan Museum</a>",
   "Mona Lisa, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. It was painted between 1503 and 1519. For more information go to <a href='https://www.britannica.com/topic/Mona-Lisa-painting' target='_blank'>britannica</a>",
   "The Adoration of the Shepherds, or the Allendale Nativity, is now almost unanimously accepted as Giorgione’s work. For more information go to <a href='https://www.nga.gov/collection/art-object-page.432.html' target='_blank'>NGA</a>",
   "Dürer’s panel was commissioned by German merchants for San Bartolomeo Church in Venice in 1506. For more information go to <a href='https://sbirky.ngprague.cz/en/dielo/CZE:NG.O_1552' target='_blank'>NGP</a>",
@@ -81,12 +81,9 @@ let currentIndex = 0;
 const imgElement = document.getElementById("timelineImage");
 const titleElement = document.getElementById("imageTitle");
 const descElement = document.getElementById("description");
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
 const searchResults = document.getElementById("searchResults");
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
-const searchResults = document.getElementById("searchResults");
 function updateDisplay() {
   imgElement.src = images[currentIndex] || "";
   titleElement.innerText = titles[currentIndex] || "Image Title";
@@ -126,24 +123,24 @@ let searchResultsArray = [];
 function searchImages(input) {
   searchResults.innerHTML = "";
   searchResultsArray = [];
-  
+
   if (!input.trim()) {
     searchResults.style.display = "none";
     return;
   }
-  
+
   const inputLower = input.toLowerCase();
-  
+
   for (let i = 0; i < titles.length; i++) {
-    if (titles[i].toLowerCase().includes(inputLower) || 
+    if (titles[i].toLowerCase().includes(inputLower) ||
         descriptions[i].toLowerCase().includes(inputLower)) {
       searchResultsArray.push(i);
     }
   }
- 
+
   if (searchResultsArray.length > 0) {
     searchResults.style.display = "block";
-    
+
     searchResultsArray.forEach(index => {
       const resultItem = document.createElement("div");
       resultItem.className = "search-result-item";
@@ -176,7 +173,7 @@ if (searchInput) {
     if (event.key === "Enter") {
       searchImages(searchInput.value);
     }
-    
+
     if (searchInput.value.length >= 3) {
       searchImages(searchInput.value);
     } else if (searchInput.value.length === 0) {
@@ -186,7 +183,7 @@ if (searchInput) {
 }
 
 document.addEventListener("click", function(event) {
-  if (event.target !== searchInput && event.target !== searchResults && 
+  if (event.target !== searchInput && event.target !== searchResults &&
       !searchResults.contains(event.target) && event.target !== searchButton) {
     searchResults.style.display = "none";
   }
@@ -198,24 +195,24 @@ let searchResultsArray = [];
 function searchImages(input) {
   searchResults.innerHTML = "";
   searchResultsArray = [];
-  
+
   if (!input.trim()) {
     searchResults.style.display = "none";
     return;
   }
-  
+
   const inputLower = input.toLowerCase();
-  
+
   for (let i = 0; i < titles.length; i++) {
-    if (titles[i].toLowerCase().includes(inputLower) || 
+    if (titles[i].toLowerCase().includes(inputLower) ||
         descriptions[i].toLowerCase().includes(inputLower)) {
       searchResultsArray.push(i);
     }
   }
- 
+
   if (searchResultsArray.length > 0) {
     searchResults.style.display = "block";
-    
+
     searchResultsArray.forEach(index => {
       const resultItem = document.createElement("div");
       resultItem.className = "search-result-item";
@@ -248,7 +245,7 @@ if (searchInput) {
     if (event.key === "Enter") {
       searchImages(searchInput.value);
     }
-    
+
     if (searchInput.value.length >= 3) {
       searchImages(searchInput.value);
     } else if (searchInput.value.length === 0) {
@@ -258,7 +255,7 @@ if (searchInput) {
 }
 
 document.addEventListener("click", function(event) {
-  if (event.target !== searchInput && event.target !== searchResults && 
+  if (event.target !== searchInput && event.target !== searchResults &&
       !searchResults.contains(event.target) && event.target !== searchButton) {
     searchResults.style.display = "none";
   }

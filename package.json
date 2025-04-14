@@ -8,12 +8,12 @@
     "lint:js": "eslint '**/*.js' --fix",
     "lint:css": "stylelint '**/*.css' --fix",
     "postinstall": "yarn lint:js && yarn lint:css",
-    "deploy": "gh-pages -d . -u \"github-actions-bot <actions@github.com>\" -r https://x-access-token:$GH_TOKEN@github.com/yourusername/ColorConnect.git",
+    "deploy": "gh-pages -d . -u \"github-actions-bot <actions@github.com>\" -r https://x-access-token:$GH_TOKEN@github.com/kennethkharel/ColorConnect.git",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ColorConnect.git"
+    "url": "https://github.com/kennethkharel/ColorConnect.git"
   },
   "private": true,
   "devDependencies": {
