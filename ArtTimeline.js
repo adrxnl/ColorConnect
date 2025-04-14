@@ -1,3 +1,4 @@
+// Data Arrays
 const images = [
   "Timeline Images/The Tribute Money.jpg",
   "Timeline Images/Federico da Montefeltro and Battista Sforza.webp",
@@ -77,17 +78,21 @@ const descriptions = [
   "Stateless People, An Assembly by Uzo Egonu depicts a group of people facing marginalization. For more information go to <a href='https://www.arthistoryproject.com/artists/uzo-egonu/stateless-people-an-assembly/' target='_blank'>arthistoryproject</a>"
 ];
 
+// Image and text display
 let currentIndex = 0;
-const imgElement = document.getElementById("timelineImage");
+const imgElement   = document.getElementById("timelineImage");
 const titleElement = document.getElementById("imageTitle");
-const descElement = document.getElementById("description");
+const descElement  = document.getElementById("description");
+
+// Search-related elements
 const searchResults = document.getElementById("searchResults");
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
+const searchInput   = document.getElementById("searchInput");
+const searchButton  = document.getElementById("searchButton");
+
 function updateDisplay() {
-  imgElement.src = images[currentIndex] || "";
+  imgElement.src         = images[currentIndex] || "";
   titleElement.innerText = titles[currentIndex] || "Image Title";
-  descElement.innerHTML = descriptions[currentIndex] || "Description goes here...";
+  descElement.innerHTML  = descriptions[currentIndex] || "Description goes here...";
 }
 
 function prevImage() {
@@ -117,10 +122,14 @@ function applyFilter(type) {
   }
 }
 
+// Initialize display
 updateDisplay();
+
+// --- Search Functionality ---
 let searchResultsArray = [];
 
 function searchImages(input) {
+  // Clear previous results.
   searchResults.innerHTML = "";
   searchResultsArray = [];
 
@@ -131,6 +140,7 @@ function searchImages(input) {
 
   const inputLower = input.toLowerCase();
 
+  // Collect matching indices.
   for (let i = 0; i < titles.length; i++) {
     if (titles[i].toLowerCase().includes(inputLower) ||
         descriptions[i].toLowerCase().includes(inputLower)) {
@@ -143,7 +153,7 @@ function searchImages(input) {
 
     searchResultsArray.forEach(index => {
       const resultItem = document.createElement("div");
-      resultItem.className = "search-result-item";
+      resultItem.className  = "search-result-item";
       resultItem.textContent = titles[index];
       resultItem.addEventListener("click", function() {
         currentIndex = index;
@@ -155,13 +165,14 @@ function searchImages(input) {
     });
   } else {
     searchResults.style.display = "block";
-    const noResults = document.createElement("div");
-    noResults.className = "no-results";
-    noResults.textContent = "No matching artworks found";
+    const noResults         = document.createElement("div");
+    noResults.className     = "no-results";
+    noResults.textContent   = "No matching artworks found";
     searchResults.appendChild(noResults);
   }
 }
 
+// Event listeners for search input and button.
 if (searchButton) {
   searchButton.addEventListener("click", function() {
     searchImages(searchInput.value);
@@ -172,9 +183,7 @@ if (searchInput) {
   searchInput.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
       searchImages(searchInput.value);
-    }
-
-    if (searchInput.value.length >= 3) {
+    } else if (searchInput.value.length >= 3) {
       searchImages(searchInput.value);
     } else if (searchInput.value.length === 0) {
       searchResults.style.display = "none";
@@ -183,79 +192,12 @@ if (searchInput) {
 }
 
 document.addEventListener("click", function(event) {
-  if (event.target !== searchInput && event.target !== searchResults &&
-      !searchResults.contains(event.target) && event.target !== searchButton) {
-    searchResults.style.display = "none";
-  }
-});
-
-let searchResultsArray = [];
-
-function searchImages(input) {
-  searchResults.innerHTML = "";
-  searchResultsArray = [];
-
-  if (!input.trim()) {
-    searchResults.style.display = "none";
-    return;
-  }
-
-  const inputLower = input.toLowerCase();
-
-  for (let i = 0; i < titles.length; i++) {
-    if (titles[i].toLowerCase().includes(inputLower) ||
-        descriptions[i].toLowerCase().includes(inputLower)) {
-      searchResultsArray.push(i);
-    }
-  }
-
-  if (searchResultsArray.length > 0) {
-    searchResults.style.display = "block";
-
-    searchResultsArray.forEach(index => {
-      const resultItem = document.createElement("div");
-      resultItem.className = "search-result-item";
-      resultItem.textContent = titles[index];
-      resultItem.addEventListener("click", function() {
-        currentIndex = index;
-        updateDisplay();
-        searchResults.style.display = "none";
-        searchInput.value = "";
-      });
-      searchResults.appendChild(resultItem);
-    });
-  } else {
-    searchResults.style.display = "block";
-    const noResults = document.createElement("div");
-    noResults.className = "no-results";
-    noResults.textContent = "No matching artworks found";
-    searchResults.appendChild(noResults);
-  }
-}
-
-if (searchButton) {
-  searchButton.addEventListener("click", function() {
-    searchImages(searchInput.value);
-  });
-}
-
-if (searchInput) {
-  searchInput.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      searchImages(searchInput.value);
-    }
-
-    if (searchInput.value.length >= 3) {
-      searchImages(searchInput.value);
-    } else if (searchInput.value.length === 0) {
-      searchResults.style.display = "none";
-    }
-  });
-}
-
-document.addEventListener("click", function(event) {
-  if (event.target !== searchInput && event.target !== searchResults &&
-      !searchResults.contains(event.target) && event.target !== searchButton) {
+  if (
+      event.target !== searchInput &&
+      event.target !== searchResults &&
+      !searchResults.contains(event.target) &&
+      event.target !== searchButton
+  ) {
     searchResults.style.display = "none";
   }
 });
