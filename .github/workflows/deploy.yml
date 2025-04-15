@@ -1,19 +1,22 @@
-name: Deploy to GitHub Pages
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  lint-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -22,10 +25,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Configure Git
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
+      - name: Run JavaScript Linting
+        run: yarn lint:js
+
+      - name: Run CSS Linting
+        run: yarn lint:css
 
       - name: Deploy to GitHub Pages
         run: yarn deploy
