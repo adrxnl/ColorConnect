@@ -2,21 +2,36 @@
 <html>
 <head>
     <title>ColorConnect</title>
+    <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ColorConnect</h1>
-
-    <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="test.html">Colorblind Test</a></li>
-          <li><a href="conversion.html">Photo Conversion</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="ArtTimeline.html">Art Timeline</a></li>
-          <li><a href="artExplorer.html">Art Explorer</a></li>
-        </ul>
-    </nav>
+    <header class="topbar">
+        <h1>ColorConnect</h1>
+    </header>
+    
+    <div class="sidebar collapsed" id ="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="test.html">Color Blindness Test</a>
+            <a href="conversion.html">Photo Conversion</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="ArtTimeline.html">Art Timeline</a>
+            <a href="artExplorer.html">Art Explorer</a>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <h1>ColorConnect</h1>
+        <p>Welcome to ColorConnect! Explore the world of color and art.</p>
+        <p>To begin using all services, please proceed with the Color Blindness Test.</p>
+        
+        <div class="button-container">
+            <a href="test.html" class="start-test-btn">Start Color Blindness Test</a>
+        </div>
+    </div>
+    <script src="index.js"></script>
 </body>
 </html>
 
