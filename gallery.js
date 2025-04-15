@@ -66,3 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGallery();
     });
 });
+
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
+}
