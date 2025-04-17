@@ -1,0 +1,18 @@
+{
+  "name": "colorconnect",
+  "version": "1.0.0",
+  "description": "ColorConnect project deployed via GitHub Pages",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d . -u \"github-actions-bot <actions@github.com>\" -r https://x-access-token:$GH_TOKEN@github.com/adrxnl/ColorConnect.git",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrxnl/ColorConnect.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ColorConnect: Gallery</title>
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>ColorConnect</h1>
+    </header>
+
+    <div class="sidebar collapsed" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="test.html">Color Blindness Test</a>
+            <a href="conversion.html">Photo Conversion</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="ArtTimeline.html">Art Timeline</a>
+            <a href="artExplorer.html">Art Explorer</a>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <h1>ColorConnect Gallery</h1>
+        
+        <div id="gallery-container"></div>
+        <button id="clear-gallery">Clear Gallery</button>
+        <script src="gallery.js"></script>
+    </div>
+</body>
+</html>
