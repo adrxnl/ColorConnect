@@ -278,9 +278,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
-// Sidebar toggle function (matches the one in test.js)
-function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("collapsed");
-}
