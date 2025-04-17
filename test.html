@@ -2,15 +2,30 @@
 <html>
 <head>
     <title>Color Blindness Test</title>
-    <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="sidebar.css">-->
+    <link rel="stylesheet" href="conversionstyle.css">
 </head>
 <body>
-    <header class="topbar">
-        <h1>ColorConnect</h1>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="CC logo.png" width="50" height="50" >
+                    <div class="logo-text">Color Connect</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="test.html">Colorblind Test</a></li>
+                    <li><a href="conversion.html">Photo Conversion</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="ArtTimeline.html">Art Timeline</a></li>
+                    <li><a href="artExplorer.html">Art Explorer</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    <div class="sidebar collapsed" id ="sidebar">
+    <!--<div class="sidebar collapsed" id ="sidebar">
         <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
         <nav class="nav-links">
             <a href="index.html">Home</a>
@@ -20,7 +35,7 @@
             <a href="ArtTimeline.html">Art Timeline</a>
             <a href="artExplorer.html">Art Explorer</a>
         </nav>
-    </div>
+    </div>-->
     
     <div class="main-content">
         <h1>Color Blindness Test</h1>
@@ -47,6 +62,13 @@
             <button id="nothing-btn" data-value="clear">Nothing</button>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <img src="CC logo.png" width="230" height="230">
+        </div>
+    </footer>
+
     <script src="test.js"></script>
 </body>
 </html>
