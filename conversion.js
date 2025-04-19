@@ -160,7 +160,6 @@ class PhotoManager {
         }
     }
 
-
     applyFilterToImage() {
         // Reset canvas
         this.filteredContext.putImageData(this.originalImageData, 0, 0);
@@ -279,8 +278,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
-function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("collapsed");
-}
