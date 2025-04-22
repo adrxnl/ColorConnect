@@ -84,9 +84,7 @@ const descElement = document.getElementById("description");
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const searchResults = document.getElementById("searchResults");
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
-const searchResults = document.getElementById("searchResults");
+
 function updateDisplay() {
   imgElement.src = images[currentIndex] || "";
   titleElement.innerText = titles[currentIndex] || "Image Title";
@@ -191,9 +189,9 @@ document.addEventListener("click", function(event) {
     searchResults.style.display = "none";
   }
 });
-<<<<<<< HEAD
-=======
-let searchResultsArray = [];
+//<<<<<<< HEAD
+//=======
+//let searchResultsArray = [];
 
 function searchImages(input) {
   searchResults.innerHTML = "";
@@ -263,3 +261,8 @@ document.addEventListener("click", function(event) {
     searchResults.style.display = "none";
   }
 });
+
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("collapsed");
+}
