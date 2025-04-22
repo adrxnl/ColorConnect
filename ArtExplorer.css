@@ -2,7 +2,6 @@
 body {
     color: var(--text-color);
     text-align: center;
-    background-color: white;
 }
 
 .search-container {
