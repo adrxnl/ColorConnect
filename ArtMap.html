@@ -4,8 +4,9 @@
   <title>Interactive Art Map</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="ArtMap.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="conversionstyle.css">
   
   <style>
     #map {
@@ -16,65 +17,26 @@
 </head>
 <body>
 
-  <header>
-    <div class="container">
-        <nav>
-            <div class="logo-container">
-                <img src="CC logo.png" width="50" height="50" >
-                <div class="logo-text">Color Connect</div>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="test.html">Colorblind Test</a></li>
-                
-                <li class="dropdown">
-                    <a href="#">Services ▼</a>
-                    <div class="dropdown-content">
-                        <a href="conversion.html">Photo Conversion</a>
-                        <a href="gallery.html">Gallery</a>
-                        <a href="game.html">Game</a>
-                    </div>
-                </li>
-                
-                <li class="dropdown">
-                    <a href="#">Art Features ▼</a>
-                    <div class="dropdown-content">
-                        <a href="ArtMap.html">Art Map</a>
-                        <a href="ArtTimeline.html">Art Timeline</a>
-                        <a href="ArtExplorer.html">Art Explorer</a>
-                    </div>
-                </li>
-                
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="LogIn.html">Log In</a></li>
-            </ul>
-        </nav>
-    </div>
+<header class="topbar">
+  <h1>ColorConnect</h1>
 </header>
 
-<main>
+<div class="sidebar collapsed" id="sidebar">
+  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="test.html">Color Blindness Test</a>
+    <a href="conversion.html">Photo Conversion</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="ArtTimeline.html">Art Timeline</a>
+    <a href="artExplorer.html">Art Explorer</a>
+  </nav>
+</div>
+
 <div class="main-content">
   <div id="map"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="ArtMap.js"></script>
 </div>
-</main>
-
-<footer>
-  <div class="container">
-      <div class="footer-content">
-              <div class="footer-logo">
-                  <img src="CC logo.png" width="50" height="50" >
-                  <div class="footer-logo-text">Color Connect</div>
-              </div>
-      </div>
-
-      <div class="footer-bottom">
-          <p>&copy; 2025 ColorConnect. All rights reserved. | <a href="#" style="color: white; text-decoration: underline;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: underline;">Terms of Service</a></p>
-      </div>
-  </div>
-</footer>
-
 </body>
 </html>
