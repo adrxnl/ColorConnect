@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ColorConnect: Profile</title>
+    <link rel="stylesheet" href="conversionstyle.css">
+    <style>
+        .profile-section {
+            max-width: 500px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #40e0d0;
+        }
+
+        .profile-section h2 {
+            text-align: center;
+            color: #40e0d0;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-info {
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-info label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-info p {
+            margin: 0 0 1rem;
+        }
+
+        .signout-button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #40e0d0;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signout-button:hover {
+            background-color: #c2ff54;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="CC logo.png" width="50" height="50" >
+                    <div class="logo-text">Color Connect</div>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="test.html">Colorblind Test</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Services ▼</a>
+                        <div class="dropdown-content">
+                            <a href="conversion.html">Photo Conversion</a>
+                            <a href="gallery.html">Gallery</a>
+                            <a href="game.html">Game</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Art Features ▼</a>
+                        <div class="dropdown-content">
+                            <a href="ArtMap.html">Art Map</a>
+                            <a href="ArtTimeline.html">Art Timeline</a>
+                            <a href="ArtExplorer.html">Art Explorer</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="LogIn.html">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="profile-section">
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <label>Username:</label>
+            <p id="profile-username">Loading...</p>
+
+            <label>Email:</label>
+            <p id="profile-email">Loading...</p>
+
+            <label>Account Created:</label>
+            <p id="profile-created">Loading...</p>
+
+            <label>Colorblindness Type:</label>
+            <p id="profile-colorblindness">Loading...</p>
+        </div>
+        <button class="signout-button" id="signout-button">Sign Out</button>
+    </section>
+
+    <!-- Load the Firebase-powered script at the end -->
+    <script type="module" src="Profile.js"></script>
+</body>
+</html>

@@ -2,32 +2,69 @@
 <html>
 <head>
     <title>ColorConnect: Gallery</title>
-    <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="conversionstyle.css">
 </head>
 <body>
-    <header class="topbar">
-        <h1>ColorConnect</h1>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="CC logo.png" width="50" height="50" >
+                    <div class="logo-text">Color Connect</div>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="test.html">Colorblind Test</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Services ▼</a>
+                        <div class="dropdown-content">
+                            <a href="conversion.html">Photo Conversion</a>
+                            <a href="gallery.html">Gallery</a>
+                            <a href="game.html">Game</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Art Features ▼</a>
+                        <div class="dropdown-content">
+                            <a href="ArtMap.html">Art Map</a>
+                            <a href="ArtTimeline.html">Art Timeline</a>
+                            <a href="ArtExplorer.html">Art Explorer</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="LogIn.html">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="sidebar collapsed" id="sidebar">
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="test.html">Color Blindness Test</a>
-            <a href="conversion.html">Photo Conversion</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="ArtTimeline.html">Art Timeline</a>
-            <a href="artExplorer.html">Art Explorer</a>
-        </nav>
-    </div>
+    <main>
+    <h1 class="section-title">ColorConnect Gallery</h1>
     
-    <div class="main-content">
-        <h1>ColorConnect Gallery</h1>
-        
-        <div id="gallery-container"></div>
-        <button id="clear-gallery">Clear Gallery</button>
-        <script src="gallery.js"></script>
-    </div>
+    <div id="gallery-container"></div>
+    <button id="clear-gallery">Clear Gallery</button>
+    <script src="gallery.js"></script>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="CC logo.png" width="50" height="50" >
+                        <div class="footer-logo-text">Color Connect</div>
+                    </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ColorConnect. All rights reserved. | <a href="#" style="color: white; text-decoration: underline;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: underline;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+
 </body>
 </html>

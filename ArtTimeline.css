@@ -1,12 +1,14 @@
 body { 
   font-family: Arial, sans-serif; 
-  text-align: center; 
-  display: flex; 
-  flex-direction: column; 
+  text-align: center;  
   align-items: center; 
-  height: 100vh; 
-  margin: 0; 
 }
+
+main{
+  display: flex; 
+  flex-direction: column;
+}
+
 .title { 
   font-size: 24px; 
   margin-top: 10px; 
