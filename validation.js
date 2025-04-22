@@ -1,98 +1,92 @@
-// Import Firebase modules
+// validation.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// Firebase Config (Replace with your actual Firebase credentials)
 const firebaseConfig = {
-    apiKey: "AIzaSyBp2YridCWSaVd66UUbRkkRbAscINS7HjU",
-    authDomain: "colorconnect-f850c.firebaseapp.com",
-    projectId: "colorconnect-f850c",
-    storageBucket: "colorconnect-f850c.firebasestorage.app",
-    messagingSenderId: "937372901345",
-    appId: "1:937372901345:web:e57c1c80094871b2923ca0"
-  };
+  apiKey: "AIzaSyBp2YridCWSaVd66UUbRkkRbAscINS7HjU",
+  authDomain: "colorconnect-f850c.firebaseapp.com",
+  projectId: "colorconnect-f850c",
+  storageBucket: "colorconnect-f850c.appspot.com",
+  messagingSenderId: "937372901345",
+  appId: "1:937372901345:web:e57c1c80094871b2923ca0",
+  databaseURL: "https://colorconnect-f850c-default-rtdb.firebaseio.com"
+};
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
-// Handle Signup Form Submission
 document.addEventListener("DOMContentLoaded", function () {
-    const signupForm = document.getElementById("SignupForm");
-    const loginForm = document.getElementById("LoginForm");
-    const errorMessage = document.getElementById("error-message");
+  const signupForm = document.getElementById("SignupForm");
+  const loginForm = document.getElementById("LoginForm");
+  const errorMessage = document.getElementById("error-message");
 
-    if (signupForm) {
-        signupForm.addEventListener("submit", function (e) {
-            e.preventDefault();
+  if (signupForm) {
+    signupForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-            const username = document.getElementById("username-input").value;
-            const email = document.getElementById("email-input").value;
-            const password = document.getElementById("password-input").value;
-            const confirmPassword = document.getElementById("confirmpassword-input").value;
+      const username = document.getElementById("username-input").value;
+      const email = document.getElementById("email-input").value;
+      const password = document.getElementById("password-input").value;
+      const confirmPassword = document.getElementById("confirmpassword-input").value;
+      const colorblindnessType = document.getElementById("colorblind-select")?.value || "none";
 
-            // Validate password match
-            if (password !== confirmPassword) {
-                errorMessage.textContent = "Passwords do not match!";
-                return;
+      if (password !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match!";
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          set(ref(db, 'users/' + user.uid), {
+            username,
+            email,
+            colorblindnessType,
+            createdAt: new Date().toISOString()
+          })
+          .then(() => {
+            alert("Signup successful!");
+            window.location.href = "LogIn.html";
+          })
+          .catch((error) => {
+            errorMessage.textContent = "Failed to save user data: " + error.message;
+          });
+        })
+        .catch((error) => {
+          errorMessage.textContent = "Signup failed: " + error.message;
+        });
+    });
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email-input").value;
+      const password = document.getElementById("password-input").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          get(ref(db, 'users/' + user.uid)).then((snapshot) => {
+            if (snapshot.exists()) {
+              const userData = snapshot.val();
+              localStorage.setItem('colorBlindnessType', userData.colorblindnessType || 'none');
+              alert(`Login successful`);
+              window.location.href = "test.html";
+            } else {
+              errorMessage.textContent = "User data not found!";
             }
-
-            // Register user with Firebase Authentication
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    const userId = user.uid;
-
-                    // Assign a random colorblindness type
-                    const colorblindnessType = "none"
-
-                    // Save user info in Firebase Database
-                    set(ref(db, 'users/' + userId), {
-                        username: username,
-                        email: email,
-                        colorblindnessType: colorblindnessType,
-                        createdAt: new Date().toISOString()
-                    });
-
-                    alert(`Signup successful!`);
-                    window.location.href = "LogIn.html"; // Redirect to login page
-                })
-                .catch((error) => {
-                    errorMessage.textContent = "Error: " + error.message;
-                });
+          }).catch((error) => {
+            errorMessage.textContent = "Error retrieving user data: " + error.message;
+          });
+        })
+        .catch((error) => {
+          errorMessage.textContent = "Invalid email or password.";
         });
-    }
-
-    // Login Form Handling
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById("email-input").value;
-            const password = document.getElementById("password-input").value;
-
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    const userId = user.uid;
-                    window.location.href = "ColorConnect.html"; // Redirect to user dashboard
-                    // Retrieve user info from database
-                    get(ref(db, 'users/' + userId)).then((snapshot) => {
-                        if (snapshot.exists()) {
-                            const userData = snapshot.val();
-                            alert(`Login successful`);
-                            
-                        } else {
-                            errorMessage.textContent = "User data not found!";
-                        }
-                    });
-                })
-                .catch((error) => {
-                    errorMessage.textContent = "Invalid email or password. Please try again.";
-                });
-        });
-    }
+    });
+  }
 });
-
