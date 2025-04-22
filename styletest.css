@@ -81,6 +81,7 @@ nav {
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("CC logo.png");
     color: white;
     position: relative;
     overflow: hidden;
@@ -196,3 +197,4 @@ footer .logo-svg {
     height: 30px;
     margin-bottom: 1rem;
 }
+
