@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Connect</title>
+    <link rel="stylesheet" href="conversionstyle.css">
     <style>
         * {
             margin: 0;
@@ -12,13 +13,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
+        main {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
             text-align: center;
-            background-color: #f9f9f9;
         }
 
         h1 {
@@ -254,7 +253,44 @@
     </style>
 </head>
 <body>
-    <h1>Color Connect</h1>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="CC logo.png" width="50" height="50" >
+                    <div class="logo-text">Color Connect</div>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="test.html">Colorblind Test</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Services ▼</a>
+                        <div class="dropdown-content">
+                            <a href="conversion.html">Photo Conversion</a>
+                            <a href="gallery.html">Gallery</a>
+                            <a href="game.html">Game</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Art Features ▼</a>
+                        <div class="dropdown-content">
+                            <a href="ArtMap.html">Art Map</a>
+                            <a href="ArtTimeline.html">Art Timeline</a>
+                            <a href="ArtExplorer.html">Art Explorer</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="LogIn.html">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
     <h2 id="color-prompt"><span id="color-indicator" class="color-indicator"></span>Find something  <span id="color-name">RED</span></h2>
     
     <div class="camera-container">
@@ -329,6 +365,22 @@
         </div>
         <div id="debug-output"></div>
     </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="CC logo.png" width="50" height="50" >
+                        <div class="footer-logo-text">Color Connect</div>
+                    </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ColorConnect. All rights reserved. | <a href="#" style="color: white; text-decoration: underline;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: underline;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
 
     <script>
 
