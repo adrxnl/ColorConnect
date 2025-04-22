@@ -24,10 +24,29 @@ body {
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    
 }
+
 
 main{
     margin-bottom: 50px;
+    align-items: center;
+
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: .5s;
+}
+
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 h1{
