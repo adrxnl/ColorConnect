@@ -9,6 +9,25 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Create custom icons for museums and artworks with different colors
+/* 
+const redIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+const greenIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+*/ 
 const museumIcon = L.divIcon({
   className: 'custom-div-icon',
   html: `<div style="background-color:#4285F4; width:15px; height:15px; border-radius:50%; border:2px solid white;"></div>`,
@@ -163,7 +182,8 @@ const artworks = [
       year: "c. 1503-1506",
       location: [48.8606, 2.3376], // Louvre Museum
       museum: "Louvre Museum",
-      description: "One of the most famous portraits in Western art"
+      description: "One of the most famous portraits in Western art",
+      image: "Timeline%20Images/Mona%20Lisa.avif"
   },
   {
       name: "Starry Night",
@@ -171,7 +191,8 @@ const artworks = [
       year: "1889",
       location: [40.7614, -73.9776], // MoMA
       museum: "Museum of Modern Art (MoMA)",
-      description: "Van Gogh's most famous work depicting a night scene with swirling clouds"
+      description: "Van Gogh's most famous work depicting a night scene with swirling clouds",
+      image: "Timeline%20Images/Starry%20Night.jpg"
   },
   {
       name: "American Gothic",
@@ -179,7 +200,7 @@ const artworks = [
       year: "1930",
       location: [41.8796, -87.6237], // Art Institute of Chicago
       museum: "Art Institute of Chicago",
-      description: "Iconic portrayal of a farmer standing beside his daughter"
+      description: "Iconic portrayal of a farmer standing beside his daughter"//,
   },
   {
       name: "The Scream",
@@ -187,7 +208,8 @@ const artworks = [
       year: "1893",
       location: [59.9156, 10.7386], // National Gallery of Norway
       museum: "National Museum of Art, Norway",
-      description: "Expressionist painting depicting a figure with an agonized expression"
+      description: "Expressionist painting depicting a figure with an agonized expression",
+      image: "Timeline%20Images/The Scream.webp"
   },
   {
       name: "Group of Seven Collection",
@@ -195,7 +217,8 @@ const artworks = [
       year: "1920-1933",
       location: [43.6536, -79.3927], // Art Gallery of Ontario
       museum: "Art Gallery of Ontario",
-      description: "Iconic Canadian landscape paintings"
+      description: "Iconic Canadian landscape paintings",
+      image: "Timeline Images/Rapallo boats.jpg"
   },
   {
       name: "The Sleeping Venus",
@@ -203,7 +226,8 @@ const artworks = [
       year: "1944",
       location: [45.4986, -73.5795], // Montreal Museum of Fine Arts
       museum: "Montreal Museum of Fine Arts",
-      description: "Surrealist painting depicting a dream-like scene with Venus"
+      description: "Surrealist painting depicting a dream-like scene with Venus",
+      image: "Timeline Images/The Adoration of the Shepherds,.jpg"
   },
   {
       name: "Autumn Rhythm (Number 30)",
@@ -211,7 +235,8 @@ const artworks = [
       year: "1950",
       location: [40.7794, -73.9632], // The Met
       museum: "Metropolitan Museum of Art",
-      description: "Famous abstract expressionist painting"
+      description: "Famous abstract expressionist painting",
+      image: "Timeline Images/Stateless People, An Assembly.jpeg"
   },
   {
       name: "The Night Watch",
@@ -219,7 +244,8 @@ const artworks = [
       year: "1642",
       location: [52.3600, 4.8852], // Rijksmuseum
       museum: "Rijksmuseum",
-      description: "Dutch Golden Age masterpiece showing Captain Frans Banning Cocq's militia company"
+      description: "Dutch Golden Age masterpiece showing Captain Frans Banning Cocq's militia company",
+      image: "Timeline Images/The Dancing Couple.jpg"
   },
   {
       name: "Water Lilies",
@@ -227,7 +253,8 @@ const artworks = [
       year: "1914-1926",
       location: [48.8600, 2.3266], // Musée d'Orsay
       museum: "Musée d'Orsay",
-      description: "Series of approximately 250 oil paintings depicting Monet's flower garden"
+      description: "Series of approximately 250 oil paintings depicting Monet's flower garden",
+      image: "Timeline Images/Pierre-Auguste Renoir, The Skiff (La Yole).jpg"
   },
   {
       name: "Les Demoiselles d'Avignon",
@@ -235,7 +262,8 @@ const artworks = [
       year: "1907",
       location: [40.7614, -73.9776], // MoMA
       museum: "Museum of Modern Art (MoMA)",
-      description: "Revolutionary work that influenced the development of Cubism"
+      description: "Revolutionary work that influenced the development of Cubism",
+      image: "Timeline Images/Christ in the House of Martha and Mary.jpg"
   },
   {
       name: "The Persistence of Memory",
@@ -243,7 +271,8 @@ const artworks = [
       year: "1931",
       location: [40.7614, -73.9776], // MoMA
       museum: "Museum of Modern Art (MoMA)",
-      description: "Famous surrealist work with melting clocks in a dreamscape"
+      description: "Famous surrealist work with melting clocks in a dreamscape",
+      image: "Timeline Images/Et in Arcadia ego.png"
   },
   {
       name: "The Birth of Venus",
@@ -251,7 +280,8 @@ const artworks = [
       year: "c. 1484-1486",
       location: [43.7677, 11.2553], // Uffizi Gallery
       museum: "Uffizi Gallery",
-      description: "Depicts the goddess Venus arriving at the shore after her birth"
+      description: "Depicts the goddess Venus arriving at the shore after her birth",
+      image: "Timeline Images/Federico da Montefeltro and Battista Sforza.webp"
   },
   {
       name: "Guernica",
@@ -259,7 +289,8 @@ const artworks = [
       year: "1937",
       location: [40.4138, -3.6922], // Museo Reina Sofía (near Prado)
       museum: "Museo Reina Sofía",
-      description: "Powerful anti-war painting depicting the bombing of Guernica during Spanish Civil War"
+      description: "Powerful anti-war painting depicting the bombing of Guernica during Spanish Civil War",
+      image: "Timeline Images/Napoleon Crossing the Alps.jpg"
   },
   {
       name: "Girl with a Pearl Earring",
@@ -267,7 +298,8 @@ const artworks = [
       year: "c. 1665",
       location: [52.0799, 4.3111], // Mauritshuis
       museum: "Mauritshuis",
-      description: "Portrait of a young woman with a pearl earring, sometimes called 'Dutch Mona Lisa'"
+      description: "Portrait of a young woman with a pearl earring, sometimes called 'Dutch Mona Lisa'",
+      image: "Timeline Images/Girl with a Pearl Earring .webp"
   },
   {
       name: "The Garden of Earthly Delights",
@@ -275,7 +307,8 @@ const artworks = [
       year: "1490-1510",
       location: [40.4138, -3.6922], // Prado Museum
       museum: "Museo del Prado",
-      description: "Triptych depicting paradise, earthly pleasure, and hell"
+      description: "Triptych depicting paradise, earthly pleasure, and hell",
+      image: "Timeline Images/Feast of the Rose Garlands.jpeg"
   },
   {
       name: "The Great Wave off Kanagawa",
@@ -283,7 +316,8 @@ const artworks = [
       year: "c. 1830-1832",
       location: [35.7188, 139.7766], // Tokyo National Museum (approximation)
       museum: "Tokyo National Museum",
-      description: "Ukiyo-e woodblock print of a giant wave threatening boats near Mount Fuji"
+      description: "Ukiyo-e woodblock print of a giant wave threatening boats near Mount Fuji",
+      image: "Timeline Images/ Apple Tree With Red Fruit.jpg"
   },
   {
       name: "The Creation of Adam",
@@ -291,7 +325,8 @@ const artworks = [
       year: "c. 1512",
       location: [41.9029, 12.4534], // Sistine Chapel
       museum: "Vatican Museums (Sistine Chapel)",
-      description: "Part of the Sistine Chapel ceiling fresco depicting God giving life to Adam"
+      description: "Part of the Sistine Chapel ceiling fresco depicting God giving life to Adam",
+      image: "Timeline Images/the Last Supper.jpg"
   },
   {
       name: "Sunflowers",
@@ -299,7 +334,8 @@ const artworks = [
       year: "1888",
       location: [51.5089, -0.1283], // National Gallery
       museum: "National Gallery",
-      description: "Series of still life paintings depicting sunflowers in a vase"
+      description: "Series of still life paintings depicting sunflowers in a vase",
+      image: "Timeline Images/Piazza San Marco.jpeg"
   }
 ];
 
@@ -327,6 +363,10 @@ artworks.forEach(artwork => {
               <p style="margin: 0 0 5px 0;"><i>By ${artwork.artist}, ${artwork.year}</i></p>
               <p style="margin: 0 0 5px 0;"><b>Location:</b> ${artwork.museum}</p>
               <p style="margin: 0;">${artwork.description}</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="${artwork.image}"
+                alt="${artwork.name}" width="150" style="border-radius: 8px;"/>
           </div>
       `);
 });
@@ -425,8 +465,8 @@ const resetViewButton = L.control({position: 'topleft'});
 resetViewButton.onAdd = function() {
   const div = L.DomUtil.create('div', 'reset-view-button');
   div.innerHTML = `
-      <button onclick="resetMapView()" style="background-color: white; padding: 5px 10px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer;">
-          Show All Museums
+      <button onclick="resetMapView()" style="background-color: white; color: black; padding: 5px 10px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer;">
+          Show All
       </button>
   `;
   return div;
@@ -445,31 +485,9 @@ function resetMapView() {
   map.fitBounds(bounds, {padding: [50, 50]});
 }
 
-const redIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
 
-const greenIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
 
 /*
-const map = L.map('map').setView([36.5, -98], 5); 
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
     //Art Pieces
     L.marker([48.8566, 2.3522])
         .addTo(map)
