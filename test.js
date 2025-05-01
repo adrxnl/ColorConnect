@@ -96,6 +96,9 @@ async function showResults() {
   statusMessage.textContent = `Test Complete! Color Blindness Type: ${colorBlindnessType}`;
 
   let resultMessage = `
+    <br>
+    <h1>Test Results</h1>
+    <br>
     <p>Red Sensitivity: ${redSensitivity.toFixed(2)}%</p>
     <p>Green Sensitivity: ${greenSensitivity.toFixed(2)}%</p>
     <p>Blue Sensitivity: ${blueSensitivity.toFixed(2)}%</p>
@@ -114,9 +117,14 @@ async function showResults() {
     }
   }
 
-  const resultContainer = document.createElement('div');
+  const mainContent = document.querySelector(".main-content");
+
+  mainContent.innerHTML = "";
+
+  const resultContainer = document.createElement("div");
   resultContainer.innerHTML = resultMessage;
-  document.body.appendChild(resultContainer);
+
+  mainContent.appendChild(resultContainer);
 
   plateImage.style.display = "none";
   document.getElementById("number-pad").style.display = "none";
@@ -124,10 +132,17 @@ async function showResults() {
 }
 
 function determineColorBlindnessType() {
-  if (redSensitivity < 50) return 'protanopia';
-  if (greenSensitivity < 50) return 'deuteranopia';
-  if (blueSensitivity < 50) return 'tritanopia';
-  return 'normal';
+  const sensitivities = [
+    { type: 'Protan', value: redSensitivity },
+    { type: 'Deutan', value: greenSensitivity },
+    { type: 'Tritan', value: blueSensitivity }
+  ];
+
+  // Find the weakest category
+  const weakest = sensitivities.reduce((min, current) => current.value < min.value ? current : min);
+
+  // Check if the weakest category is below the threshold of 80
+  return weakest.value < 80 ? weakest.type : 'Normal Vision';
 }
 
 // Make toggleSidebar globally accessible
@@ -135,4 +150,3 @@ window.toggleSidebar = function () {
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("collapsed");
   };
-  
